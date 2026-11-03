@@ -102,6 +102,9 @@ A separate package may be provided for Lively Wallpaper. Compatibility and insta
 4. Use Lively Wallpaper's add/import workflow to select `index.html` or the package format supported by your installed version.
 5. Apply the wallpaper and confirm that it displays and behaves as expected.
 
+<img width="861" height="868" alt="0" src="https://github.com/user-attachments/assets/aa69eddd-48c1-46d2-ae39-72cbde0cdc28" />
+<img width="861" height="928" alt="1" src="https://github.com/user-attachments/assets/2d28e92c-7cfd-44b0-884a-a697e28044bf" />
+
 Some previously distributed Lively-specific packages may include the following files:
 
 - `lively_setup_x86_full_v2210.exe`
