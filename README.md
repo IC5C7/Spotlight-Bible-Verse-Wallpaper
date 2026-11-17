@@ -68,7 +68,17 @@ Built-in translations and previously downloaded translations can be accessed wit
 
 **Background images**
 
-Some background images are retrieved from external image services and may require an internet connection. Offline Bible access does not guarantee that online content or remote background images will also be available offline.
+Background images are retrieved directly from the Microsoft Windows Spotlight API v4, an external image service that requires an internet connection to fetch assets. Accordingly, offline Bible access does not guarantee that online content or remote background images will also be available offline.
+
+**Metadata & Behavior**
+
+The API response contains Spotlight image assets and associated metadata, including titles and descriptions when available.
+The wallpaper uses the landscape image URL supplied directly by the API response. Localized titles, descriptions, photographer credits, and image-detail links are used only when provided by the corresponding Microsoft Spotlight record.
+The image and its metadata are obtained from the same API response. No separate English feed, cross-feed image matching, translated-title matching, photographer-credit comparison, third-party image metadata service, or external Spotlight gallery fallback is required.
+The wallpaper does not independently search for or substitute another image's metadata.
+Internet access is required to retrieve new Spotlight images and metadata. Browser CORS restrictions, Microsoft service availability, or upstream API changes may affect retrieval.
+> [!IMPORTANT]
+> The Windows Spotlight API v4 endpoint is an undocumented service interface used by Windows Spotlight. It is not a guaranteed public developer API. Its parameters, response structure, and availability may change without notice.
 
 ### 5. Offline Data Storage and Compatibility
 
