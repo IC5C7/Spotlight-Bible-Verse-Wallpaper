@@ -11,8 +11,26 @@
     <link rel="stylesheet" href="style/modal.css" />
   </head>
   <body translate="no">
-    <div id="bgImageLayer" aria-hidden="true"></div>
+    <div id="bgImageLayer" aria-hidden="true">
+      <div class="bg-sub-layer bg-layer-1 is-startup-wallpaper"></div>
+      <div class="bg-sub-layer bg-layer-2"></div>
+    </div>
     <div id="bgOverlay" aria-hidden="true"></div>
+
+    <div id="spotlightInfoControl" class="spotlight-info-control">
+      <button id="spotlightInfoTrigger" class="spotlight-info-trigger" type="button" aria-label="Show Windows Spotlight image information" title="Show Windows Spotlight image information" aria-expanded="false" aria-controls="spotlightInfoPanel">
+      </button>
+      <section id="spotlightInfoPanel" class="spotlight-info-panel" role="region" aria-label="Windows Spotlight image information" aria-hidden="true">
+        <div class="spotlight-info-panel-content">
+          <p class="spotlight-info-eyebrow">Windows Spotlight</p>
+          <h2 id="spotlightImageTitle">Loading image details...</h2>
+          <p id="spotlightImageDescription" class="spotlight-info-description"></p>
+
+          <p id="spotlightImageCopyright" class="spotlight-info-copyright"></p>
+          <a id="spotlightImageSource" class="spotlight-info-source" target="_blank" rel="noopener noreferrer" hidden>Learn more about this image</a>
+        </div>
+      </section>
+    </div>
 
     <main class="verse-layout" aria-live="polite">
       <section class="verse-region">
@@ -23,6 +41,9 @@
       </section>
     </main>
     <nav id="bibleControlBar" class="control-bar" aria-label="Bible controls">
+      <button id="btnToggleText" class="text-visibility-toggle" type="button" title="성경 본문 숨기기" aria-label="성경 본문 숨기기" data-tip="성경 본문 숨기기" aria-pressed="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
       <button id="btnPrev" title="이전 구절" aria-label="이전 구절">&lt;</button>
       <button id="btnPause" title="일시정지" aria-label="일시정지">⏸</button>
       <button id="btnNext" title="다음 구절" aria-label="다음 구절">&gt;</button>

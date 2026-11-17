@@ -9,6 +9,8 @@ let shuffleHistory = [];
 let shuffleHistoryIndex = -1;
 let currentVerseText = "";
 let currentKey = "";
+let isBibleTextVisible = true;
+const BIBLE_TEXT_VISIBILITY_KEY = "bible_text_visible";
 
 const BIBLE_CONTENT_TRANSLATION_KEY = "bible_content_translation";
 const OFFLINE_BIBLE_SOURCE_KEY = "bible_offline_source";
@@ -154,6 +156,8 @@ const UI_TRANSLATIONS = {
     "이전 구절": "Previous verse",
     일시정지: "Pause",
     "다음 구절": "Next verse",
+    "성경 본문 숨기기": "Hide Bible text",
+    "성경 본문 표시": "Show Bible text",
     "북마크 추가": "Add bookmark",
     "성경 목차 직접 찾기": "Browse Bible",
     "이모지 태그 선택": "Choose emoji tag",
@@ -171,10 +175,6 @@ const UI_TRANSLATIONS = {
       "Automatically match the interface language to your system language.",
     "⚙️ 환경 설정": "⚙️ Settings",
     "🔤 폰트 및 시각 효과 설정": "🔤 Font and visual effects",
-    "🖼️ 배경 이미지 해상도 지정": "🖼️ Background image resolution",
-    "1K 해상도": "1K resolution",
-    "2K 해상도": "2K resolution",
-    "4K 해상도 (기본)": "4K resolution (default)",
     "글자 크기 조절": "Text size",
     "크기 축소": "Decrease size",
     "크기 확대": "Increase size",
@@ -197,9 +197,7 @@ const UI_TRANSLATIONS = {
     "⏳ 임시 데이터 및 캐시 삭제 중…": "⏳ Clearing temporary data and cache…",
     "프로젝트 임시 저장소와 앱 캐시를 삭제합니다. 폰트 설정 및 보관함 데이터는 유지됩니다":
       "Clear only explicitly named temporary/cache data and runtime Bible lookup caches; preferences and library data are preserved",
-    "• 사진 원본:": "• Photo source:",
     "• 성경 원본:": "• Bible source:",
-    "클릭 시 사진 API 주소가 복사됩니다": "Click to copy the photo API URL",
     "클릭 시 GitHub 주소가 복사됩니다": "Click to copy the GitHub URL",
     "📖 성경 목차 선택": "📖 Browse Bible",
     "📚 읽고 싶은 성경 책을 선택하세요": "📚 Select a Bible book",
@@ -339,6 +337,8 @@ const UI_TRANSLATIONS = {
     "이전 구절": "上一节",
     일시정지: "暂停",
     "다음 구절": "下一节",
+    "성경 본문 숨기기": "隐藏圣经经文",
+    "성경 본문 표시": "显示圣经经文",
     "북마크 추가": "添加书签",
     "성경 목차 직접 찾기": "浏览圣经目录",
     "이모지 태그 선택": "选择表情标签",
@@ -356,10 +356,6 @@ const UI_TRANSLATIONS = {
       "根据系统语言自动设置界面语言。",
     "⚙️ 환경 설정": "⚙️ 设置",
     "🔤 폰트 및 시각 효과 설정": "🔤 字体与视觉效果",
-    "🖼️ 배경 이미지 해상도 지정": "🖼️ 背景图像分辨率",
-    "1K 해상도": "1K 分辨率",
-    "2K 해상도": "2K 分辨率",
-    "4K 해상도 (기본)": "4K 分辨率（默认）",
     "글자 크기 조절": "文字大小",
     "크기 축소": "缩小",
     "크기 확대": "放大",
@@ -382,9 +378,7 @@ const UI_TRANSLATIONS = {
     "⏳ 임시 데이터 및 캐시 삭제 중…": "⏳ 正在清理临时数据和缓存…",
     "프로젝트 임시 저장소와 앱 캐시를 삭제합니다. 폰트 설정 및 보관함 데이터는 유지됩니다":
       "清除项目临时数据和应用缓存。字体设置与收藏数据会保留",
-    "• 사진 원본:": "• 图片来源：",
     "• 성경 원본:": "• 圣经来源：",
-    "클릭 시 사진 API 주소가 복사됩니다": "点击复制图片 API 地址",
     "클릭 시 GitHub 주소가 복사됩니다": "点击复制 GitHub 地址",
     "📖 성경 목차 선택": "📖 浏览圣经",
     "📚 읽고 싶은 성경 책을 선택하세요": "📚 请选择要阅读的圣经书卷",
@@ -513,6 +507,8 @@ const UI_TRANSLATIONS = {
     "이전 구절": "前の節",
     일시정지: "一時停止",
     "다음 구절": "次の節",
+    "성경 본문 숨기기": "聖書本文を隠す",
+    "성경 본문 표시": "聖書本文を表示",
     "북마크 추가": "ブックマークを追加",
     "성경 목차 직접 찾기": "聖書の目次を開く",
     "이모지 태그 선택": "絵文字タグを選択",
@@ -530,10 +526,6 @@ const UI_TRANSLATIONS = {
       "システム言語に合わせてUI言語を自動設定します。",
     "⚙️ 환경 설정": "⚙️ 設定",
     "🔤 폰트 및 시각 효과 설정": "🔤 フォントと視覚効果",
-    "🖼️ 배경 이미지 해상도 지정": "🖼️ 背景画像の解像度",
-    "1K 해상도": "1K 解像度",
-    "2K 해상도": "2K 解像度",
-    "4K 해상도 (기본)": "4K 解像度（標準）",
     "글자 크기 조절": "文字サイズ",
     "크기 축소": "縮小",
     "크기 확대": "拡大",
@@ -557,10 +549,7 @@ const UI_TRANSLATIONS = {
       "⏳ 一時データとキャッシュを削除しています…",
     "프로젝트 임시 저장소와 앱 캐시를 삭제합니다. 폰트 설정 및 보관함 데이터는 유지됩니다":
       "プロジェクトの一時データとアプリキャッシュを削除します。フォント設定とライブラリデータは保持されます",
-    "• 사진 원본:": "• 写真ソース：",
     "• 성경 원본:": "• 聖書ソース：",
-    "클릭 시 사진 API 주소가 복사됩니다":
-      "クリックすると写真APIのURLをコピーします",
     "클릭 시 GitHub 주소가 복사됩니다":
       "クリックするとGitHubのURLをコピーします",
     "📖 성경 목차 선택": "📖 聖書を選択",
@@ -761,6 +750,22 @@ Object.assign(UI_TRANSLATIONS.zh, {
   "❗ 정말 초기화하시겠습니까? (한번 더 누르세요)":
     "❗ 确定要重置吗？请再点击一次确认。",
 });
+Object.assign(UI_TRANSLATIONS.en, {
+  "이전 다운로드를 완전히 중지하고 있습니다. 잠시 후 다시 시작하세요.": "The previous download is stopping. Please wait a moment before restarting it.",
+  "삭제 확인": "Confirm deletion",
+  "취소": "Cancel",
+});
+Object.assign(UI_TRANSLATIONS.zh, {
+  "이전 다운로드를 완전히 중지하고 있습니다. 잠시 후 다시 시작하세요.": "上一个下载正在停止，请稍候再重新启动。",
+  "삭제 확인": "确认删除",
+  "취소": "取消",
+});
+Object.assign(UI_TRANSLATIONS.ja, {
+  "이전 다운로드를 완전히 중지하고 있습니다. 잠시 후 다시 시작하세요.": "前のダウンロードを停止中です。少し待ってから再開してください。",
+  "삭제 확인": "削除の確認",
+  "취소": "キャンセル",
+});
+
 Object.assign(UI_TRANSLATIONS.ja, {
   "바탕 (Batang)": "Batang（韓国語セリフ）",
   "나눔명조 (Nanum Myeongjo)": "Nanum 明朝",
@@ -1560,12 +1565,15 @@ function getUILanguagePreference() {
         localStorage.getItem(UI_LANGUAGE_DEFAULT_MIGRATION_KEY) === "true";
 
       if (!migrationDone) {
+        // Respect the host/browser locale on a fresh install. Previously the
+        // first-run migration converted the System language choice into English,
+        // which bypassed all Korean Spotlight-specific handling on Korean PCs.
         cachedUILanguagePreference =
           !saved || saved === "system"
-            ? "en"
+            ? "system"
             : ["system", "en", "ko", "zh", "ja"].includes(saved)
               ? saved
-              : "en";
+              : "system";
         localStorage.setItem(UI_LANGUAGE_KEY, cachedUILanguagePreference);
         localStorage.setItem(UI_LANGUAGE_DEFAULT_MIGRATION_KEY, "true");
       } else {
@@ -1578,7 +1586,7 @@ function getUILanguagePreference() {
         ].includes(saved)
           ? saved
           : "en";
-        if (!saved) localStorage.setItem(UI_LANGUAGE_KEY, "en");
+        if (!saved) localStorage.setItem(UI_LANGUAGE_KEY, "system");
       }
     } catch (error) {
       cachedUILanguagePreference = "en";
@@ -1595,6 +1603,7 @@ function saveUILanguagePreference(language) {
   } catch (error) {
     console.warn("Failed to save the interface language preference.", error);
   }
+  window.dispatchEvent(new Event("spotlight-ui-language-change"));
 }
 
 function getSystemUILanguage() {
@@ -1612,7 +1621,31 @@ function getUILanguage() {
   return preference === "system" ? getSystemUILanguage() : preference;
 }
 
+export function getSpotlightLocale() {
+  const preference = getUILanguagePreference();
+  if (preference === "system") {
+    const systemLocale = String(
+      navigator.languages?.[0] || navigator.language || "en-US",
+    );
+    if (/^ko(?:-|$)/i.test(systemLocale)) return systemLocale.includes("-") ? systemLocale : "ko-KR";
+    if (/^zh(?:-|$)/i.test(systemLocale)) return systemLocale.includes("-") ? systemLocale : "zh-CN";
+    if (/^ja(?:-|$)/i.test(systemLocale)) return systemLocale.includes("-") ? systemLocale : "ja-JP";
+    return systemLocale.includes("-") ? systemLocale : "en-US";
+  }
+  return {
+    en: "en-US",
+    ko: "ko-KR",
+    zh: "zh-CN",
+    ja: "ja-JP",
+  }[preference] || "en-US";
+}
+
 const UI_STATIC_EN_TRANSLATIONS = {
+  "Spotlight Wallpaper": {
+    ko: "Spotlight 배경화면",
+    zh: "Spotlight 壁纸",
+    ja: "Spotlight 壁紙",
+  },
   "System language": { ko: "시스템 언어", zh: "系统语言", ja: "システム言語" },
   "Bible controls": {
     ko: "성경 제어 패널",
@@ -1743,15 +1776,100 @@ const UI_STATIC_EN_TRANSLATIONS = {
     zh: "其他图像来源",
     ja: "追加の画像ソース",
   },
-  "Picsum Photos — wallpaper image source": {
-    ko: "Picsum Photos — 배경 이미지 소스",
-    zh: "Picsum Photos — 壁纸图像来源",
-    ja: "Picsum Photos — 壁紙画像ソース",
+  "Show Windows Spotlight image information": {
+    ko: "Windows Spotlight 이미지 정보 보기",
+    zh: "查看 Windows Spotlight 图像信息",
+    ja: "Windows Spotlight の画像情報を表示",
   },
-  "Used as the image source for the rotating wallpaper background.": {
-    ko: "배경화면 이미지 소스로 사용합니다.",
-    zh: "用作轮播壁纸的图像来源。",
-    ja: "切り替わる壁紙の画像ソースとして使用します。",
+  "Windows Spotlight image information": {
+    ko: "Windows Spotlight 이미지 정보",
+    zh: "Windows Spotlight 图像信息",
+    ja: "Windows Spotlight の画像情報",
+  },
+  "Loading image details...": {
+    ko: "이미지 정보를 불러오는 중...",
+    zh: "正在加载图像信息...",
+    ja: "画像情報を読み込んでいます...",
+  },
+  "Image information is unavailable.": {
+    ko: "이미지 정보를 사용할 수 없습니다.",
+    zh: "图像信息暂不可用。",
+    ja: "画像情報を利用できません。",
+  },
+  "Image title unavailable": {
+    ko: "이미지 제목 없음",
+    zh: "暂无图像标题",
+    ja: "画像タイトルなし",
+  },
+  "Photo credit unavailable": {
+    ko: "사진 출처 정보 없음",
+    zh: "暂无照片署名信息",
+    ja: "写真のクレジット情報なし",
+  },
+  "Learn more about this image": {
+    ko: "이 이미지 자세히 알아보기",
+    zh: "了解此图像的更多信息",
+    ja: "この画像の詳細を見る",
+  },
+  "Offline Bible storage": {
+    ko: "오프라인 성경 저장소",
+    zh: "离线圣经存储",
+    ja: "オフライン聖書ストレージ",
+  },
+  "Online Bible.com translations connect directly to Bible.com. Built-in translations are read from the wallpaper package, and translations downloaded from the online selector are stored persistently in this wallpaper's browser storage (IndexedDB). No localhost server or automatic-start task is used.": {
+    ko: "온라인 Bible.com 역본은 Bible.com에 직접 연결합니다. 내장 역본은 배경화면 패키지에서 읽고, 온라인 선택 화면에서 다운로드한 역본은 이 배경화면의 브라우저 저장소(IndexedDB)에 영구 보관합니다. localhost 서버나 자동 시작 작업은 사용하지 않습니다.",
+    zh: "在线 Bible.com 译本会直接连接 Bible.com。内置译本从壁纸程序包读取；通过在线选择器下载的译本会持久保存在此壁纸的浏览器存储（IndexedDB）中。本项目不使用 localhost 服务器或自动启动任务。",
+    ja: "オンラインの Bible.com 翻訳は Bible.com に直接接続します。内蔵翻訳は壁紙パッケージから読み込み、オンライン選択画面からダウンロードした翻訳は、この壁紙のブラウザーストレージ（IndexedDB）に永続保存します。localhost サーバーや自動起動タスクは使用しません。",
+  },
+  "Built-in Bible text could not be loaded. Please verify the wallpaper package files.": {
+    ko: "내장 성경 본문을 불러오지 못했습니다. 배경화면 패키지 파일을 확인하세요.",
+    zh: "无法加载内置圣经正文。请检查壁纸程序包文件。",
+    ja: "内蔵の聖書本文を読み込めませんでした。壁紙パッケージのファイルを確認してください。",
+  },
+  "Microsoft Windows Spotlight network endpoints": {
+    ko: "Microsoft Windows Spotlight 네트워크 엔드포인트",
+    zh: "Microsoft Windows Spotlight 网络端点",
+    ja: "Microsoft Windows Spotlight ネットワークエンドポイント",
+  },
+  "Spotlight response parsing": {
+    ko: "Spotlight 응답 구문 분석",
+    zh: "Spotlight 响应解析",
+    ja: "Spotlight 応答の解析",
+  },
+  "Microsoft Windows Spotlight image and metadata feed": {
+    ko: "Microsoft Windows Spotlight 이미지 및 메타데이터 피드",
+    zh: "Microsoft Windows Spotlight 图像和元数据源",
+    ja: "Microsoft Windows Spotlight 画像・メタデータフィード",
+  },
+  "MyMemory Spotlight metadata translation fallback": {
+    ko: "MyMemory Spotlight 메타데이터 번역 보충",
+    zh: "MyMemory Spotlight 元数据翻译补充",
+    ja: "MyMemory Spotlight メタデータ翻訳の補完",
+  },
+  "MyMemory API specifications": {
+    ko: "MyMemory API 명세",
+    zh: "MyMemory API 规范",
+    ja: "MyMemory API 仕様",
+  },
+  "The feed returns up to four Windows Spotlight image records. Each nested item contains an image asset URL and may include a title, description, photo credit, and learn-more link.": {
+    ko: "피드는 최대 4개의 Windows Spotlight 이미지 레코드를 반환합니다. 각 중첩 항목에는 이미지 에셋 URL이 포함되며 제목, 설명, 사진 출처 및 자세히 보기 링크가 제공될 수 있습니다.",
+    zh: "该源最多返回 4 条 Windows Spotlight 图像记录。每个嵌套项目包含图像资源 URL，并可能提供标题、说明、摄影署名和详细信息链接。",
+    ja: "フィードは最大 4 件の Windows Spotlight 画像レコードを返します。各ネスト項目には画像アセット URL が含まれ、タイトル、説明、写真クレジット、詳細リンクが含まれる場合があります。",
+  },
+  "For Korean, the Korean feed is kept as the primary source and the same-country English feed (for example, en-KR) is requested for detailed descriptions, with en-US as a fallback. English descriptions are matched to images using normalized asset filenames and, when uniquely identifying, the original detail link; only a matched description is translated. If the Korean feed is unavailable, English title and description fields are translated into Korean while photographer credits remain unchanged. An English title unexpectedly returned by the Korean feed is also translated, but an already-Korean title is preserved. If Microsoft has no usable description, the existing image-and-credit matcher may try the Spotlight gallery as a last resort. Other interface languages retain their localized metadata behavior.": {
+    ko: "한국어 UI에서는 같은 국가의 영어 피드(예: ko-KR이면 en-KR)를 항상 요청하고, 필요하면 en-US를 대체로 조회합니다. 이미지 에셋 식별자로 일치하는 상세설명만 한국어로 번역하며 한국어 제목, 사진 출처, 이미지 에셋 및 원본 링크는 유지합니다. 다른 언어의 피드는 누락된 메타데이터만 영어 피드로 보충합니다. 항목은 자세히 보기 링크가 아니라 이미지 에셋 식별자로 연결합니다.",
+    zh: "对于韩语界面，始终请求同一国家/地区的英文数据源（例如 ko-KR 对应 en-KR），必要时再使用 en-US。仅将按图像资源标识匹配的图片说明翻译成韩语；韩语标题、摄影署名、图像资源和来源链接均保持不变。其他语言仅使用英文数据源补充缺失的元数据。记录按图像资源标识匹配，而不是按“了解更多”链接匹配。",
+    ja: "韓国語 UI では、同じ国の英語フィード（例：ko-KR には en-KR）を常に要求し、必要に応じて en-US を代替として使用します。画像アセット ID で一致した画像説明のみを韓国語に翻訳し、韓国語のタイトル、写真クレジット、画像アセット、元のリンクは保持します。他の言語では不足しているメタデータのみ英語フィードで補完します。レコードは「詳細を見る」リンクではなく画像アセット ID で照合します。",
+  },
+  "Optional Spotlight metadata translation uses the MyMemory translation API. Anonymous use is limited to 5,000 characters per day and each request is limited to 500 bytes. The service may be unavailable or quota-limited; when translation fails, the original text is retained.": {
+    ko: "Spotlight 메타데이터의 선택적 번역에는 MyMemory 번역 API를 사용합니다. 비회원 사용량은 하루 5,000자, 요청당 500바이트로 제한됩니다. 서비스가 중단되거나 사용량 제한에 도달하면 번역하지 않고 원문을 유지합니다.",
+    zh: "Spotlight 元数据的可选翻译使用 MyMemory 翻译 API。匿名使用量每天限制为 5,000 个字符，每次请求限制为 500 字节。服务可能不可用或达到配额限制；翻译失败时会保留原文。",
+    ja: "Spotlight メタデータの任意翻訳には MyMemory 翻訳 API を使用します。匿名利用は 1 日 5,000 文字、1 リクエスト 500 バイトに制限されています。サービスが利用できない場合や上限に達した場合は、翻訳せず原文を保持します。",
+  },
+  "The endpoint is undocumented and may change. Browser CORS restrictions may prevent the wallpaper from reading the feed in some environments.": {
+    ko: "이 엔드포인트는 공식적으로 문서화되지 않았으며 변경될 수 있습니다. 일부 환경에서는 브라우저의 CORS 제한으로 배경화면이 피드를 읽지 못할 수 있습니다.",
+    zh: "此端点没有正式公开文档，可能发生变化。在某些环境中，浏览器的 CORS 限制可能阻止壁纸读取该数据源。",
+    ja: "このエンドポイントは公式に文書化されておらず、変更される可能性があります。環境によってはブラウザーの CORS 制限により、壁紙からフィードを読み取れない場合があります。",
   },
 
   "⌨ Show keyboard": {
@@ -2118,6 +2236,109 @@ Object.assign(UI_STATIC_EN_TRANSLATIONS, {
   },
 });
 
+Object.assign(UI_STATIC_EN_TRANSLATIONS, {
+  "Bible.com language/default-version catalog": {
+    ko: "Bible.com 언어 및 기본 역본 카탈로그",
+    zh: "Bible.com 语言和默认译本目录",
+    ja: "Bible.com 言語・既定の翻訳カタログ",
+  },
+  "Provides default language and translation configuration.": {
+    ko: "기본 언어 및 역본 설정을 제공합니다.",
+    zh: "提供默认语言和译本配置。",
+    ja: "既定の言語と翻訳の設定を提供します。",
+  },
+  "Bible.com translation catalog": {
+    ko: "Bible.com 역본 카탈로그",
+    zh: "Bible.com 译本目录",
+    ja: "Bible.com 翻訳カタログ",
+  },
+  "Lists translations for the selected language.": {
+    ko: "선택한 언어에서 제공되는 역본을 나열합니다.",
+    zh: "列出所选语言提供的译本。",
+    ja: "選択した言語で利用できる翻訳を一覧表示します。",
+  },
+  "Open an English sample": {
+    ko: "영문 예시 열기",
+    zh: "打开英文示例",
+    ja: "英語のサンプルを開く",
+  },
+  "Bible.com translation metadata and book/chapter index": {
+    ko: "Bible.com 역본 메타데이터 및 성경 책·장 색인",
+    zh: "Bible.com 译本元数据及书卷/章节索引",
+    ja: "Bible.com 翻訳メタデータと書巻・章の索引",
+  },
+  "Bible.com rendered chapter text": {
+    ko: "Bible.com 렌더링 장 본문",
+    zh: "Bible.com 渲染的章节正文",
+    ja: "Bible.com の章テキスト表示",
+  },
+  "Fallback page patterns omit the locale or translation abbreviation.": {
+    ko: "대체 페이지 패턴에서는 로캘 또는 역본 약칭을 생략합니다.",
+    zh: "备用页面格式会省略区域设置或译本缩写。",
+    ja: "フォールバックページの形式では、ロケールまたは翻訳の略称を省略します。",
+  },
+  "Bible.com legacy Next.js JSON fallback": {
+    ko: "Bible.com 레거시 Next.js JSON 대체 경로",
+    zh: "Bible.com 旧版 Next.js JSON 回退接口",
+    ja: "Bible.com レガシー Next.js JSON フォールバック",
+  },
+  "The build ID is read from": {
+    ko: "빌드 ID는 다음 주소에서 읽습니다:",
+    zh: "构建 ID 从以下地址读取：",
+    ja: "ビルド ID は次の URL から読み取ります：",
+  },
+  "; a second request may append": {
+    ko: "; 두 번째 요청에는 다음 매개변수가 추가될 수 있습니다:",
+    zh: "；第二次请求可能附加以下参数：",
+    ja: "。2 回目のリクエストでは次のパラメーターを追加する場合があります：",
+  },
+  "This is only a fallback when the chapter page parser cannot find text.": {
+    ko: "장 페이지 파서에서 본문을 찾지 못할 때만 사용하는 대체 경로입니다.",
+    zh: "仅在章节页面解析器无法找到正文时使用此回退接口。",
+    ja: "章ページのパーサーで本文が見つからない場合にのみ使用するフォールバックです。",
+  },
+  "Bible.com translation information pages": {
+    ko: "Bible.com 역본 정보 페이지",
+    zh: "Bible.com 译本信息页面",
+    ja: "Bible.com 翻訳情報ページ",
+  },
+  "are shown as reference links in the selection UI; the language index is": {
+    ko: "는 선택 UI에서 참고 링크로 표시되며, 언어 색인 주소는 다음과 같습니다:",
+    zh: "会作为选择界面中的参考链接显示；语言索引地址为：",
+    ja: "は選択 UI の参考リンクとして表示されます。言語インデックスは次の URL です：",
+  },
+  "Wikidata Query Service — publication-year metadata (P577)": {
+    ko: "Wikidata Query Service — 출판 연도 메타데이터(P577)",
+    zh: "Wikidata Query Service — 出版年份元数据（P577）",
+    ja: "Wikidata Query Service — 出版年メタデータ（P577）",
+  },
+  "Used to enrich translation release/publication years when Bible.com metadata does not provide one.": {
+    ko: "Bible.com 메타데이터에 역본의 발행 연도가 없을 때 이를 보완하는 데 사용합니다.",
+    zh: "当 Bible.com 元数据未提供译本发行/出版年份时，用于补充该信息。",
+    ja: "Bible.com のメタデータに翻訳の公開年がない場合に補完するために使用します。",
+  },
+  "Service home": {
+    ko: "서비스 홈",
+    zh: "服务主页",
+    ja: "サービスのホーム",
+  },
+  "Source repository": {
+    ko: "소스 저장소",
+    zh: "源代码仓库",
+    ja: "ソースリポジトリ",
+  },
+  "Not used": {
+    ko: "사용하지 않음",
+    zh: "未使用",
+    ja: "未使用",
+  },
+  "API.Bible and Bible Brain / FCBH APIs are not called by this project.": {
+    ko: "이 프로젝트는 API.Bible 및 Bible Brain / FCBH API를 호출하지 않습니다.",
+    zh: "本项目不会调用 API.Bible 和 Bible Brain / FCBH API。",
+    ja: "このプロジェクトは API.Bible および Bible Brain / FCBH API を呼び出しません。",
+  },
+});
+
 function translateDynamicUIString(trimmed, language) {
   let match;
   if (
@@ -2302,7 +2523,7 @@ function translateDynamicUIString(trimmed, language) {
   return null;
 }
 
-function translateUIString(value) {
+export function translateUIString(value) {
   if (typeof value !== "string") return value;
   const language = getUILanguage();
   const trimmed = value.trim();
@@ -2458,16 +2679,6 @@ function translateUIString(value) {
         ? `[${match[1]}] 下一节（${mode}）`
         : `[${match[1]}] 次の節（${mode}）`;
   }
-  match = trimmed.match(
-    /^배경 이미지 해상도가 \[(.+)\] \(으\)로 설정되었습니다\.$/,
-  );
-  if (match)
-    return language === "en"
-      ? `Background image resolution set to [${match[1]}].`
-      : language === "zh"
-        ? `背景图像分辨率已设为 [${match[1]}]。`
-        : `背景画像の解像度を [${match[1]}] に設定しました。`;
-
   return value;
 }
 
@@ -2515,7 +2726,8 @@ function localizeUITree(root) {
 function applyUILanguage() {
   const language = getUILanguage();
   document.documentElement.lang = language;
-  localizeUITree(document.getElementById("bibleControlBar"));
+  localizeUITree(document.head);
+  localizeUITree(document.body);
 
   const modal = document.getElementById("bibleModal");
   if (modal && !modal.classList.contains("hidden")) localizeUITree(modal);
@@ -2527,35 +2739,6 @@ function applyUILanguage() {
   if (downloadFloat) {
     localizeUITree(downloadFloat);
     if (activeBibleDownloadJobs.size) updateBibleDownloadFloatingWidget(activeBibleDownloadJob);
-  }
-}
-
-export function getImageResolution() {
-  const saved = localStorage.getItem("bg_image_resolution") || "4K";
-
-  if (!["1K", "2K", "4K"].includes(saved)) {
-    try {
-      localStorage.setItem("bg_image_resolution", "4K");
-    } catch {}
-    return "4K";
-  }
-  return saved;
-}
-
-export function setImageResolution(resolution) {
-  localStorage.setItem("bg_image_resolution", resolution);
-}
-
-export function getResolutionDimensions(resolution) {
-  switch (resolution) {
-    case "1K":
-      return { width: 1920, height: 1080 };
-    case "2K":
-      return { width: 2560, height: 1440 };
-    case "4K":
-      return { width: 3840, height: 2160 };
-    default:
-      return { width: 3840, height: 2160 };
   }
 }
 
@@ -5491,6 +5674,7 @@ function updateTaskbarAwareLayout() {
   const root = document.documentElement;
   root.style.setProperty("--taskbar-bottom-inset", `${taskbarBottomInset}px`);
   root.style.setProperty("--safe-bottom", `${safeBottom}px`);
+  root.style.setProperty("--control-bottom-offset", `${Math.ceil((safeBottom + 16) / 2)}px`);
 }
 
 function installTaskbarAwareLayout() {
@@ -6544,7 +6728,7 @@ async function downloadBibleComTranslation(translationId, translations, language
       );
       return;
     }
-    console.error("Bible.com 역본을 오프라인 파일로 저장하지 못했습니다.", error);
+    console.error("Could not save the Bible.com translation as an offline file.", error);
     const currentGlobalStatus = document.getElementById("bibleDownloadStatus");
     if (currentGlobalStatus && activeBibleDownloadJobs.get(jobId)?.phase !== "저장 중 오류") {
       currentGlobalStatus.textContent = translateBibleDownloadMessage(`${filename}: 다운로드 실패: ${error?.message || error}`);
@@ -6585,7 +6769,7 @@ async function openBibleVersionStep(language, languages) {
   try {
     versions = await getBibleComVersionsForLanguage(language);
   } catch (error) {
-    console.error("Bible.com 역본 목록을 불러오지 못했습니다.", error);
+    console.error("Could not load the Bible.com translation list.", error);
     showBibleDirectConnectionGuide({
       reason: error?.message || String(error),
       onRetry: () => openBibleVersionStep(language, languages),
@@ -6715,7 +6899,7 @@ async function openBibleVersionStep(language, languages) {
           languageCode: language.code,
         });
       } catch (error) {
-        console.error("Bible.com 역본을 적용하지 못했습니다.", error);
+        console.error("Could not apply the Bible.com translation.", error);
         if (status) {
           status.textContent = translateUIString(
             error?.isBibleComConnectionError
@@ -6826,7 +7010,7 @@ async function selectBibleTranslation(
         JSON.stringify({ type: "local", id: "local-ko" }),
       );
     } catch (error) {
-      console.warn("역본 설정을 저장하지 못했습니다.", error);
+      console.warn("Could not save the translation settings.", error);
     }
     if (!isRestoring) pausePlaybackForBibleChange();
     displayVerseByKey(currentKey);
@@ -6910,7 +7094,7 @@ async function selectBibleTranslation(
       }),
     );
   } catch (error) {
-    console.warn("역본 설정을 저장하지 못했습니다.", error);
+    console.warn("Could not save the translation settings.", error);
   }
   if (!isRestoring) pausePlaybackForBibleChange();
   displayVerseByKey(currentKey);
@@ -7446,8 +7630,6 @@ function openOfflineBibleDatabase() {
       const catalogStore = hadCatalog
         ? upgradeTx.objectStore(OFFLINE_BIBLE_META_STORE_NAME)
         : db.createObjectStore(OFFLINE_BIBLE_META_STORE_NAME, { keyPath: "fileName" });
-      // If upgrading the first IndexedDB schema, migrate the small catalog fields
-      // from existing translation records without changing the stored Bible data.
       if (event.oldVersion >= 1 && !hadCatalog) {
         const cursorRequest = translationStore.openCursor();
         cursorRequest.onsuccess = () => {
@@ -7509,8 +7691,6 @@ async function readStoredOfflineBible(fileName) {
 async function writeStoredOfflineBible(fileName, data) {
   const normalizedName = normalizeDownloadedBibleFilename(fileName);
   if (BUILTIN_OFFLINE_BIBLE_NAMES.has(normalizedName.toLowerCase())) {
-    // Built-in files have their own protected embedded/ path; a downloaded
-    // copy with the same filename is allowed as a separate IndexedDB record.
   }
   if (!data || typeof data !== "object" || Array.isArray(data)) {
     throw new Error("Offline Bible data must be a JSON object keyed by verse reference.");
@@ -7948,7 +8128,7 @@ async function openBibleTranslationSelector() {
     const languages = await getOnlineTranslationCatalog();
     openBibleLanguageStep(languages);
   } catch (error) {
-    console.error("Bible.com 언어 목록을 불러오지 못했습니다.", error);
+    console.error("Could not load the Bible.com language list.", error);
     showBibleDirectConnectionGuide({
       reason: error?.message || String(error),
       retrySelector: true,
@@ -8615,7 +8795,7 @@ async function renderVerseSelect(abbr, chapter, onImageChange) {
         );
       }
     } catch (error) {
-      console.error("선택한 장 본문 조회 실패:", error);
+      console.error("Could not retrieve the selected chapter text:", error);
       openModal(
         "📖 본문 조회 오류",
         `<div class="bible-translation-error"><p>역본 본문을 불러오지 못했습니다. 인터넷 연결과 Bible.com 접속 상태를 확인해 주세요.</p><button type="button" id="retryBibleChapter" class="book-select-btn">다시 시도</button><button type="button" id="openBibleDirectHelpFromChapter" class="book-select-btn">🌐 직접 연결 도움말 보기</button><button type="button" id="backToBibleChapters" class="bible-translation-back">◀ 장 목록으로 돌아가기</button></div>`,
@@ -8668,19 +8848,10 @@ function buildSettingsModalHtml(
   currentSharpness,
   currentShadow,
   currentBlur,
-  currentResolution,
 ) {
   return `<div id="settingsScrollContainer" style="max-height:min(360px, 44vh); overflow-y:auto; padding-right:10px;">
     <p style="color:#ffd700; font-size:14px; margin-bottom:12px; font-weight:bold; text-align:center;">🔤 폰트 및 시각 효과 설정</p>
-    
-    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); padding:10px; border-radius:10px; margin-bottom:10px;">
-      <label style="display:block; font-size:12px; color:rgba(255,255,255,0.8); margin-bottom:6px; text-align:center;">🖼️ 배경 이미지 해상도 지정</label>
-      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px;">
-        <button class="font-ctrl-btn resolution-btn ${currentResolution === "1K" ? "active" : ""}" data-val="1K" style="padding:6px; font-size:11px; border-radius:8px;" data-tip="1K 해상도">1K</button>
-        <button class="font-ctrl-btn resolution-btn ${currentResolution === "2K" ? "active" : ""}" data-val="2K" style="padding:6px; font-size:11px; border-radius:8px;" data-tip="2K 해상도">2K</button>
-        <button class="font-ctrl-btn resolution-btn ${currentResolution === "4K" ? "active" : ""}" data-val="4K" style="padding:6px; font-size:11px; border-radius:8px;" data-tip="4K 해상도 (기본)">4K</button>
-      </div>
-    </div>
+
 
     <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); padding:10px; border-radius:10px; margin-bottom:10px; text-align:center;">
       <label style="display:block; font-size:12px; color:rgba(255,255,255,0.8); margin-bottom:6px;">글자 크기 조절</label>
@@ -8734,19 +8905,20 @@ function buildSettingsModalHtml(
           <div class="bible-api-details-body">
             <h4>${translateUIString("External data services")}</h4>
             <ul>
-              <li><strong>Bible.com language/default-version catalog</strong><br><code>GET https://www.bible.com/api/bible/configuration</code><br>Provides default language and translation configuration.</li>
-              <li><strong>Bible.com translation catalog</strong><br><code>GET https://www.bible.com/api/bible/versions?language_tag={languageTag}&amp;type=all</code><br>Lists translations for the selected language. <a href="https://www.bible.com/api/bible/versions?language_tag=en&amp;type=all" target="_blank" rel="noopener noreferrer">Open an English sample</a>.</li>
-              <li><strong>Bible.com translation metadata and book/chapter index</strong><br><code>GET https://nodejs.bible.com/api/bible/version/3.3?id={versionId}</code></li>
-              <li><strong>Bible.com rendered chapter text</strong><br><code>GET https://www.bible.com/{locale}/bible/{versionId}/{USFM}.{abbreviation}</code><br>Fallback page patterns omit the locale or translation abbreviation.</li>
-              <li><strong>Bible.com legacy Next.js JSON fallback</strong><br><code>GET https://www.bible.com/_next/data/{buildId}/en/bible/{versionId}/{USFM}.{abbreviation}.json</code><br>The build ID is read from <a href="https://www.bible.com/" target="_blank" rel="noopener noreferrer">https://www.bible.com/</a>; a second request may append <code>?version={versionId}&amp;usfm={USFM}.{abbreviation}</code>. This is only a fallback when the chapter page parser cannot find text.</li>
-              <li><strong>Bible.com translation information pages</strong><br><code>https://www.bible.com/versions/{versionId}</code> and <code>https://www.bible.com/languages/{languageSlug}</code> are shown as reference links in the selection UI; the language index is <a href="https://www.bible.com/languages" target="_blank" rel="noopener noreferrer">Bible.com/languages</a>.</li>
-              <li><strong>Wikidata Query Service — publication-year metadata (P577)</strong><br><code>POST https://query.wikidata.org/sparql</code><br>Used to enrich translation release/publication years when Bible.com metadata does not provide one. <a href="https://query.wikidata.org/" target="_blank" rel="noopener noreferrer">Service home</a>.</li>
-              <li><strong>Source repository</strong><br><a href="https://github.com/stranger828/bibleAPI" target="_blank" rel="noopener noreferrer">https://github.com/stranger828/bibleAPI</a></li>
-              <li><strong>Not used</strong><br>API.Bible and Bible Brain / FCBH APIs are not called by this project.</li>
+              <li><strong>${translateUIString("Bible.com language/default-version catalog")}</strong><br><code>GET https://www.bible.com/api/bible/configuration</code><br>${translateUIString("Provides default language and translation configuration.")}</li>
+              <li><strong>${translateUIString("Bible.com translation catalog")}</strong><br><code>GET https://www.bible.com/api/bible/versions?language_tag={languageTag}&amp;type=all</code><br>${translateUIString("Lists translations for the selected language.")} <a href="https://www.bible.com/api/bible/versions?language_tag=en&amp;type=all" target="_blank" rel="noopener noreferrer">${translateUIString("Open an English sample")}</a>.</li>
+              <li><strong>${translateUIString("Bible.com translation metadata and book/chapter index")}</strong><br><code>GET https://nodejs.bible.com/api/bible/version/3.3?id={versionId}</code></li>
+              <li><strong>${translateUIString("Bible.com rendered chapter text")}</strong><br><code>GET https://www.bible.com/{locale}/bible/{versionId}/{USFM}.{abbreviation}</code><br>${translateUIString("Fallback page patterns omit the locale or translation abbreviation.")}</li>
+              <li><strong>${translateUIString("Bible.com legacy Next.js JSON fallback")}</strong><br><code>GET https://www.bible.com/_next/data/{buildId}/en/bible/{versionId}/{USFM}.{abbreviation}.json</code><br>${translateUIString("The build ID is read from")} <a href="https://www.bible.com/" target="_blank" rel="noopener noreferrer">https://www.bible.com/</a>${translateUIString("; a second request may append") } <code>?version={versionId}&amp;usfm={USFM}.{abbreviation}</code>. ${translateUIString("This is only a fallback when the chapter page parser cannot find text.")}</li>
+              <li><strong>${translateUIString("Bible.com translation information pages")}</strong><br><code>https://www.bible.com/versions/{versionId}</code> and <code>https://www.bible.com/languages/{languageSlug}</code> ${translateUIString("are shown as reference links in the selection UI; the language index is")} <a href="https://www.bible.com/languages" target="_blank" rel="noopener noreferrer">Bible.com/languages</a>.</li>
+              <li><strong>${translateUIString("Wikidata Query Service — publication-year metadata (P577)")}</strong><br><code>POST https://query.wikidata.org/sparql</code><br>${translateUIString("Used to enrich translation release/publication years when Bible.com metadata does not provide one.")} <a href="https://query.wikidata.org/" target="_blank" rel="noopener noreferrer">${translateUIString("Service home")}</a>.</li>
+              <li><strong>${translateUIString("Source repository")}</strong><br><a href="https://github.com/stranger828/bibleAPI" target="_blank" rel="noopener noreferrer">https://github.com/stranger828/bibleAPI</a></li>
+              <li><strong>${translateUIString("Not used")}</strong><br>${translateUIString("API.Bible and Bible Brain / FCBH APIs are not called by this project.")}</li>
             </ul>
             <h4>${translateUIString("Additional visual data source")}</h4>
             <ul>
-              <li><strong>Picsum Photos — wallpaper image source</strong><br><a href="https://picsum.photos/" target="_blank" rel="noopener noreferrer">https://picsum.photos/</a><br>Used as the image source for the rotating wallpaper background.</li>
+              <li><strong>${translateUIString("Microsoft Windows Spotlight image and metadata feed")}</strong><br><code>GET https://fd.api.iris.microsoft.com/v4/api/selection?placement=88000820&amp;bcnt=4&amp;country={country}&amp;locale={locale}&amp;fmt=json</code><br>${translateUIString("The feed returns up to four Windows Spotlight image records. Each nested item contains an image asset URL and may include a title, description, photo credit, and learn-more link.")}<br><code>batchrsp.items[].item</code> → <code>ad.landscapeImage.asset</code>, <code>ad.title</code>, <code>ad.description</code>, <code>ad.copyright</code>, <code>ad.ctaUri</code><br>${translateUIString("The endpoint is undocumented and may change. Browser CORS restrictions may prevent the wallpaper from reading the feed in some environments.")}<br><a href="https://learn.microsoft.com/windows/privacy/manage-windows-11-endpoints" target="_blank" rel="noopener noreferrer">${translateUIString("Microsoft Windows Spotlight network endpoints")}</a>.</li>
+              <li><strong>${translateUIString("MyMemory Spotlight metadata translation fallback")}</strong><br><code>GET https://api.mymemory.translated.net/get?q={text}&amp;langpair={source}|{target}</code><br>${translateUIString("For Korean, the Korean feed is kept as the primary source and the same-country English feed (for example, en-KR) is requested for detailed descriptions, with en-US as a fallback. English descriptions are matched to images using normalized asset filenames and, when uniquely identifying, the original detail link; only a matched description is translated. If the Korean feed is unavailable, English title and description fields are translated into Korean while photographer credits remain unchanged. An English title unexpectedly returned by the Korean feed is also translated, but an already-Korean title is preserved. If Microsoft has no usable description, the existing image-and-credit matcher may try the Spotlight gallery as a last resort. Other interface languages retain their localized metadata behavior.")}<br>${translateUIString("Optional Spotlight metadata translation uses the MyMemory translation API. Anonymous use is limited to 5,000 characters per day and each request is limited to 500 bytes. The service may be unavailable or quota-limited; when translation fails, the original text is retained.")} <a href="https://mymemory.translated.net/doc/spec.php" target="_blank" rel="noopener noreferrer">${translateUIString("MyMemory API specifications")}</a>.</li>
             </ul>
             <h4>${translateUIString("Offline Bible storage")}</h4>
             <p>${translateUIString("Online Bible.com translations connect directly to Bible.com. Built-in translations are read from the wallpaper package, and translations downloaded from the online selector are stored persistently in this wallpaper's browser storage (IndexedDB). No localhost server or automatic-start task is used.")}</p>
@@ -8989,7 +9161,6 @@ function openSettingsModal() {
     localStorage.getItem("bible_text_sharpness") || "subpixel-antialiased";
   const currentShadow = localStorage.getItem("bible_text_shadow") || "medium";
   const currentBlur = localStorage.getItem("bible_text_blur") || "none";
-  const currentResolution = getImageResolution();
 
   openModal(
     "⚙️ 환경 설정",
@@ -8998,7 +9169,6 @@ function openSettingsModal() {
       currentSharpness,
       currentShadow,
       currentBlur,
-      currentResolution,
     ),
   );
 
@@ -9035,7 +9205,13 @@ function openSettingsModal() {
     .getElementById("copyBibleApiListButton")
     ?.addEventListener("click", async () => {
       const endpoints = [
-        "Wallpaper image source: https://picsum.photos/",
+        `${translateUIString("Microsoft Windows Spotlight image and metadata feed")}: GET https://fd.api.iris.microsoft.com/v4/api/selection?placement=88000820&bcnt=4&country={country}&locale={locale}&fmt=json`,
+        `${translateUIString("Spotlight response parsing")}: batchrsp.items[].item (nested JSON string) -> ad.landscapeImage.asset, ad.title, ad.description, ad.copyright, ad.ctaUri`,
+        translateUIString("The endpoint is undocumented and may change. Browser CORS restrictions may prevent the wallpaper from reading the feed in some environments."),
+        `${translateUIString("For Korean, the Korean feed is kept as the primary source and the same-country English feed (for example, en-KR) is requested for detailed descriptions, with en-US as a fallback. English descriptions are matched to images using normalized asset filenames and, when uniquely identifying, the original detail link; only a matched description is translated. If the Korean feed is unavailable, English title and description fields are translated into Korean while photographer credits remain unchanged. An English title unexpectedly returned by the Korean feed is also translated, but an already-Korean title is preserved. If Microsoft has no usable description, the existing image-and-credit matcher may try the Spotlight gallery as a last resort. Other interface languages retain their localized metadata behavior.")}`,
+        `${translateUIString("MyMemory Spotlight metadata translation fallback")}: GET https://api.mymemory.translated.net/get?q={text}&langpair={source}|{target}`,
+        translateUIString("Optional Spotlight metadata translation uses the MyMemory translation API. It may be unavailable or quota-limited; when translation fails, the original text is retained."),
+        translateUIString("The endpoint is undocumented and may change. Browser CORS restrictions may prevent the wallpaper from reading the feed in some environments."),
         "Bible.com language/default-version catalog: GET https://www.bible.com/api/bible/configuration",
         "Bible.com translation catalog: GET https://www.bible.com/api/bible/versions?language_tag={languageTag}&type=all",
         "Bible.com translation metadata/books/chapters: GET https://nodejs.bible.com/api/bible/version/3.3?id={versionId}",
@@ -9060,17 +9236,6 @@ function openSettingsModal() {
       }
     });
 
-  document.querySelectorAll(".resolution-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      document
-        .querySelectorAll(".resolution-btn")
-        .forEach((b) => b.classList.remove("active"));
-      e.currentTarget.classList.add("active");
-      const selectedRes = e.currentTarget.getAttribute("data-val");
-      setImageResolution(selectedRes);
-      showToast(`배경 이미지 해상도가 [${selectedRes}] (으)로 설정되었습니다.`);
-    });
-  });
 
   let currentVal = currentMultiplier;
   document.getElementById("decreaseFontBtn")?.addEventListener("click", () => {
@@ -9202,7 +9367,7 @@ function openSettingsModal() {
           );
         }
       } catch (error) {
-        console.error("임시 데이터 및 캐시 삭제에 실패했습니다.", error);
+        console.error("Could not clear temporary data and caches.", error);
         clearTempCacheBtn.disabled = false;
         clearTempCacheBtn.textContent =
           translateUIString("🧹 임시 데이터 및 캐시 삭제");
@@ -9318,8 +9483,7 @@ function applyTextVisualEffects() {
   else if (shadowType === "light") shadowVal = "0 1px 4px rgba(0,0,0,0.3)";
   else if (shadowType === "strong") shadowVal = "0 4px 20px rgba(0,0,0,0.9)";
 
-  let blurVal = "none";
-  if (blurType === "light") blurVal = "blur(0.6px)";
+  const blurVal = blurType === "light" ? "0.6px" : "0px";
 
   [typingText, mainText].forEach((el) => {
     if (!el) return;
@@ -9334,11 +9498,12 @@ function applyTextVisualEffects() {
       el.style.fontSmooth = "auto";
     }
     el.style.textShadow = shadowVal;
-    el.style.filter = blurVal;
+    el.style.setProperty("--text-user-blur", blurVal);
   });
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  applyUILanguage();
   applyBibleFontMode();
   fitLayoutText();
   applyTextVisualEffects();
@@ -9605,7 +9770,7 @@ function captureShuffleActiveStyleFallback(shuffleButton) {
       .filter(Boolean)
       .join("\n");
   } catch (error) {
-    console.warn("셔플 활성화 스타일을 읽지 못했습니다.", error);
+    console.warn("Could not read the shuffle-active style.", error);
     return "";
   } finally {
     if (probeBar && probeBar.parentNode) probeBar.remove();
@@ -9684,15 +9849,37 @@ function updateStateMemoryButtonStyle(button, shuffleButton) {
   button.setAttribute("aria-pressed", String(active));
 }
 
-function initUIControls(onImageChange) {
-  let hintHandle = document.getElementById("uiHintHandle");
-  if (!hintHandle) {
-    hintHandle = document.createElement("div");
-    hintHandle.id = "uiHintHandle";
-    hintHandle.className = "ui-hint-handle";
-    document.body.appendChild(hintHandle);
-  }
+const VISIBLE_EYE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>';
+const HIDDEN_EYE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 3l18 18"/><path d="M10.6 5.7A10.8 10.8 0 0 1 12 5.5c6.4 0 10 6.5 10 6.5a17.4 17.4 0 0 1-3.1 3.8"/><path d="M6.6 6.7C3.7 8.4 2 12 2 12s3.6 6.5 10 6.5c1.4 0 2.7-.3 3.8-.8"/></svg>';
 
+function updateBibleTextVisibilityButton(button = document.getElementById("btnToggleText")) {
+  if (!button) return;
+  const labelKey = isBibleTextVisible ? "성경 본문 숨기기" : "성경 본문 표시";
+  const label = translateUIString(labelKey);
+  button.innerHTML = isBibleTextVisible ? VISIBLE_EYE_ICON : HIDDEN_EYE_ICON;
+  button.classList.toggle("active", isBibleTextVisible);
+  button.setAttribute("aria-pressed", String(isBibleTextVisible));
+  button.setAttribute("aria-label", label);
+  button.setAttribute("title", label);
+  button.setAttribute("data-tip", labelKey);
+}
+
+function setBibleTextVisibility(visible, button = document.getElementById("btnToggleText")) {
+  isBibleTextVisible = Boolean(visible);
+  [getTypingText(), getMainText()].forEach((element) => {
+    if (!element) return;
+    element.classList.toggle("text-content-hidden", !isBibleTextVisible);
+    element.setAttribute("aria-hidden", String(!isBibleTextVisible));
+  });
+  try {
+    localStorage.setItem(BIBLE_TEXT_VISIBILITY_KEY, String(isBibleTextVisible));
+  } catch (error) {
+    console.warn("Could not save the Bible text visibility preference.", error);
+  }
+  updateBibleTextVisibilityButton(button);
+}
+
+function initUIControls(onImageChange) {
   let globalTooltip = document.getElementById("globalUiTooltip");
   if (!globalTooltip) {
     globalTooltip = document.createElement("div");
@@ -9704,6 +9891,7 @@ function initUIControls(onImageChange) {
 
   const btnPause = document.getElementById("btnPause");
   const btnNext = document.getElementById("btnNext");
+  const btnToggleText = document.getElementById("btnToggleText");
   const btnPrev = document.getElementById("btnPrev");
   const btnBookmark = document.getElementById("btnBookmark");
   const btnSearch = document.getElementById("btnSearch");
@@ -9714,6 +9902,15 @@ function initUIControls(onImageChange) {
     "btnOfflineBibleSource",
   );
   const controlBar = document.getElementById("bibleControlBar");
+  try {
+    isBibleTextVisible = localStorage.getItem(BIBLE_TEXT_VISIBILITY_KEY) !== "false";
+  } catch (error) {
+    isBibleTextVisible = true;
+  }
+  setBibleTextVisibility(isBibleTextVisible, btnToggleText);
+  window.addEventListener("spotlight-ui-language-change", () => {
+    updateBibleTextVisibilityButton(btnToggleText);
+  });
 
   const fontComparisonPanel = document.getElementById("fontComparisonPanel");
   const uiScaleSettingsPanel = document.getElementById("uiScaleSettingsPanel");
@@ -9925,6 +10122,9 @@ function initUIControls(onImageChange) {
       const tipText = target.getAttribute("data-tip");
       if (tipText) {
         globalTooltip.textContent = translateUIString(tipText);
+        globalTooltip.dataset.position = target.closest("#bibleControlBar")
+          ? "controller"
+          : "default";
         globalTooltip.style.display = "block";
       }
     }
@@ -9937,12 +10137,15 @@ function initUIControls(onImageChange) {
         e.clientX + 12 * tooltipScale,
         window.innerWidth - globalTooltip.offsetWidth - 6,
       );
-      const tooltipTop = Math.min(
-        e.clientY + 18 * tooltipScale,
-        window.innerHeight - globalTooltip.offsetHeight - 6,
-      );
+      const isControllerTooltip = globalTooltip.dataset.position === "controller";
+      const tooltipTop = isControllerTooltip
+        ? e.clientY - globalTooltip.offsetHeight / 2
+        : e.clientY + 18 * tooltipScale;
       globalTooltip.style.left = `${Math.max(6, tooltipLeft)}px`;
-      globalTooltip.style.top = `${Math.max(6, tooltipTop)}px`;
+      globalTooltip.style.top = `${Math.max(
+        6,
+        Math.min(tooltipTop, window.innerHeight - globalTooltip.offsetHeight - 6),
+      )}px`;
     }
   });
 
@@ -9953,7 +10156,6 @@ function initUIControls(onImageChange) {
 
   function showControlBar() {
     if (controlBar) controlBar.classList.add("visible");
-    if (hintHandle) hintHandle.classList.add("hidden");
   }
 
   function isUILanguagePopoverOpen() {
@@ -9967,7 +10169,6 @@ function initUIControls(onImageChange) {
     }
     if (modal && !modal.classList.contains("hidden")) return;
     if (controlBar) controlBar.classList.remove("visible");
-    if (hintHandle) hintHandle.classList.remove("hidden");
   }
 
   window.addEventListener("mousemove", (e) => {
@@ -9982,6 +10183,10 @@ function initUIControls(onImageChange) {
 
   controlBar?.addEventListener("mouseenter", showControlBar);
   controlBar?.addEventListener("mouseleave", hideControlBar);
+
+  btnToggleText?.addEventListener("click", () => {
+    setBibleTextVisibility(!isBibleTextVisible, btnToggleText);
+  });
 
   btnPause?.addEventListener("click", () => {
     isPaused = !isPaused;
@@ -10496,7 +10701,7 @@ function renderStorageList(onImageChange) {
           readingHistory = Array.isArray(liveKeys) ? liveKeys : [];
         }
       } catch (error) {
-        console.warn("보관함 복사 데이터를 읽지 못했습니다.", error);
+        console.warn("Could not read the library copy data.", error);
         liveKeys = [];
       }
       const validKeys = new Set(liveKeys);
@@ -10775,7 +10980,7 @@ async function runBibleVerseCycle(onImageChange) {
           restoreCurrentKeyOnNextLoop = true;
         }
       } catch (error) {
-        console.warn("저장된 재생 상태를 읽지 못했습니다.", error);
+        console.warn("Could not read the saved playback state.", error);
       }
     }
     if (!restoredOfflineSource) await restoreSavedBibleTranslation();
@@ -10839,7 +11044,7 @@ async function runBibleVerseCycle(onImageChange) {
           currentKey = await getOnlineAdjacentVerseKey(currentKey, 1);
         }
       } catch (error) {
-        console.error("온라인 성경 다음 본문을 불러오지 못했습니다.", error);
+        console.error("Could not load the next online Bible passage.", error);
         currentKey = keys[Math.floor(Math.random() * keys.length)] || "";
       }
     } else if (!currentKey || !keys.includes(currentKey)) {
@@ -10891,6 +11096,9 @@ async function runBibleVerseCycle(onImageChange) {
     } catch (layoutError) {
       console.warn("Bible text layout adjustment failed; autoplay will continue.", layoutError);
     }
+
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (!isRunning) break;
 
     const speedFactor = Number.isFinite(readTime) && readTime > 0 ? readTime : 1;
     const calculatedDelay =

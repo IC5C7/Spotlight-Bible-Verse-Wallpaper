@@ -3,16 +3,6 @@
     "type": "label",
     "value": "📖 Spotlight Wallpaper Settings"
   },
-  "bg_image_resolution": {
-    "type": "dropdown",
-    "text": "Background image resolution",
-    "value": "4K",
-    "options": {
-      "1K": "1K (1920x1080)",
-      "2K": "2K (2560x1440)",
-      "4K": "4K (3840x2160)"
-    }
-  },
   "bible_font_size_multiplier": {
     "type": "slider",
     "text": "Bible text size",

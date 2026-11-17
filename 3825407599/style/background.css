@@ -44,3 +44,18 @@ body {
   background-repeat: no-repeat;
   transition: opacity 1.2s ease-in-out;
 }
+/* The bundled startup wallpaper is shown in its full original aspect ratio.
+   Letterboxing is intentional when the display has a different aspect ratio. */
+.bg-sub-layer.is-startup-wallpaper {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000;
+}
+.bg-layer-1 {
+  background-image: url("../img/startup.jpg");
+  opacity: 1;
+}
+.bg-layer-2 {
+  opacity: 0;
+}
